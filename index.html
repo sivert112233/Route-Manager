@@ -95,11 +95,10 @@
     <button onclick="buttonTest(document.querySelector('.cTest').value)">Run</button>
   </footer>
   <script>
-    let pageHtml = '';
     const time = new Date();
+    let pageHtml = '';
     let timeH = time.getHours();
     let timeM = time.getMinutes();
-
 
     function buttonTest(stop) {
       const testTimes = stop;
