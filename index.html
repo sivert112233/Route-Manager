@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rutemanager</title>
+  <style>
+    html {
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0px;
+      min-width: 370px;
+
+    }
+
+    .pageHeader {
+      display: flex;
+      align-items: center;
+      height: 80px;
+      width: 100%;
+      border-bottom: 1px solid black;
+    }
+
+    .pageHeaderMenu {
+      height: 100%;
+      width: 20%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-right: 1px solid black;
+      font-size: 40px;
+    }
+
+    .pageHeaderLogo {
+      height: 100%;
+      width: 80%;
+      display: flex;
+      justify-content: space-evenly;
+      align-items: center;
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 25px;
+      font-weight: bolder;
+    }
+
+    .mainPageStopBox {
+      display: flex;
+      align-items: center;
+      height: 40px;
+      width: 100%;
+      border-bottom: 1px solid black;
+    }
+
+    .mainPageStopBoxNumber {
+      height: 100%;
+      width: 20%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-right: 1px solid black;
+    }
+
+    .mainPageStopBoxinfo {
+      height: 100%;
+      width: 80%;
+      display: flex;
+      justify-content: space-evenly;
+      align-items: center;
+    }
+
+    .pageFooter {
+      position: fixed;
+      bottom: 0;
+      height: 80px;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid black;
+    }
+  </style>
+</head>
+
+<body>
+  <header class="pageHeader">
+    <div class="pageHeaderMenu">&#9776</div>
+    <div class="pageHeaderLogo">Rutemanager</div>
+  </header>
+  <article class="mainPage"></article>
+  <footer class="pageFooter">
+    <input class="cTest" placeholder="Enter the number of stops" type="number">
+    <button onclick="buttonTest(document.querySelector('.cTest').value)">Run</button>
+  </footer>
+  <script>
+    let pageHtml = '';
+    const time = new Date();
+    let timeH = time.getHours();
+    let timeM = time.getMinutes();
+
+
+    function buttonTest(stop) {
+      const testTimes = stop;
+      for (let i = 0; i < testTimes; i++) {
+        pageHtml = `
+          <section class="mainPageStopBox">
+            <div class="mainPageStopBoxNumber">${i + 1}</div>
+            <div class="mainPageStopBoxinfo">
+              <div class="mainPageStopBoxinfoName">Location: Kongsvinger</div>
+              <div class="mainPageStopBoxinfoTime">Arrival - ${timeH}:${timeM}</div>
+            </div>
+          </section>
+        `;
+        document.querySelector('.mainPage').innerHTML += pageHtml;
+        timeH = timeH + 1;
+      }
+    }
+    buttonTest();
+  </script>
+</body>
+
+</html>
